@@ -3,7 +3,8 @@ import mysql.connector
 config = {
     'user' : 'root',
     'password' : '',
-    'host' : 'localhost'
+    'host' : 'localhost',
+    'database' : 'crud'
 }
 
 db = mysql.connector.connect(**config)
