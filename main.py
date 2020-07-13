@@ -17,7 +17,7 @@ def get_logs():
     result = cursor.fetchall()
     
     for row in result:
-        print(row[2])
+        print(row[1])
 
 
 def get_log(digit):
@@ -30,10 +30,33 @@ def get_log(digit):
         print(row)
 
 
+def update_log(id, text):
+    sql = ("UPDATE logs SET text = %s WHERE id = %s")
+    cursor.execute(sql, (text,id))
+
+    db.commit()
+
+    print("Log {} updated".format(id))
+
+
+def delete_log(id):
+    sql = ("DELETE FROM logs WHERE id = %s")
+    cursor.execute(sql, (id,))
+    db.commit()
+
+    print("Log Removed")
+
+
+
 # add_log("This is a new user", "Chukwu Ifeanyi")
 # add_log("This is a new user being added", "Adimoha SAmuel")
 # add_log("Another user is being added", "Ehumadu REginald")
 
 #get_logs()
 
-get_log(2)
+# get_log(2)
+
+# update_log(1, "Updated user data today")
+delete_log(3)
+get_logs()
+
